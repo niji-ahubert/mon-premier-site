@@ -1,3 +1,5 @@
+### PHPstorm
+.idea/
 
 ###> symfony/framework-bundle ###
 /.env.local
