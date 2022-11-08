@@ -8,19 +8,20 @@
 
         <link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="fonts/icomoon/style.css">
+        <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
-        <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-        <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
         <!-- MAIN CSS -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -36,18 +37,29 @@
 
             {{ include ('menu.html.twig') }}
 
-            {{ include ('top-content.html.twig') }}
+
+            {# read and display several types of flash messages #}
+            {% for label, messages in app.flashes(['success', 'warning']) %}
+                {% for message in messages %}
+                    <div class="flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+
+
+            {{ include ('top-content.html.twig', {'title_page': title_page,'href_link': href_link, 'my_description': my_description}) }}
 
 
             {% block body %}
 
             {% endblock %}
 
-
         {{ include('contact.html.twig') }}
 
 
-        {{ include('footer.html.twig') }}
+        {{ include('footer.html.twig' , {'form':form} ) }}
 
         </div>
 

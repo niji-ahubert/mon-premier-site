@@ -1,0 +1,6 @@
+
+{{ form_start(form, {'method': 'POST','action': path('app_homepage'),'attr': {'class': 'd-flex subscribe'}}) }}
+          {{ form_widget(form.email, {'attr': {'class': 'form-control mr-3','placeholder': 'Email'}}) }}
+          {{ form_errors(form.email) }}
+          <input type="submit" value="Send" class="btn btn-primary">
+{{ form_end(form) }}
